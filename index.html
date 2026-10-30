@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jean online shopping landing page">
+    <title>Jean | Online Shopping</title>
+
+    <style>
+        /* General Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #e3e6e6;
+            color: #0f1111;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        select,
+        input {
+            font: inherit;
+        }
+
+        /* First Header */
+        .header-top {
+            background-color: #131921;
+            color: white;
+            min-height: 68px;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .logo {
+            font-size: 29px;
+            font-weight: bold;
+            letter-spacing: -1.5px;
+            padding: 7px;
+            white-space: nowrap;
+            border: 1px solid transparent;
+        }
+
+        .logo span {
+            color: #ff9900;
+        }
+
+        .logo:hover,
+        .header-item:hover,
+        .cart:hover,
+        .delivery:hover {
+            border: 1px solid white;
+        }
+
+        .delivery {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 5px;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .delivery-icon {
+            font-size: 22px;
+        }
+
+        .small-text {
+            display: block;
+            font-size: 12px;
+            color: #cccccc;
+            margin-bottom: 3px;
+        }
+
+        .bold-text {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Search Bar */
+        .search {
+            display: flex;
+            flex: 1;
+            min-width: 120px;
+            height: 42px;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .search:focus-within {
+            border-color: #ff9900;
+        }
+
+        .search select {
+            width: 65px;
+            border: none;
+            padding: 0 5px;
+            background-color: #e6e6e6;
+            color: #333333;
+            font-size: 12px;
+        }
+
+        .search input {
+            flex: 1;
+            min-width: 0;
+            border: none;
+            padding: 10px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .search button {
+            width: 48px;
+            border: none;
+            background-color: #febd69;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .search button:hover {
+            background-color: #f3a847;
+        }
+
+        /* Header Items */
+        .header-item {
+            padding: 7px 5px;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .language {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .language select {
+            width: 48px;
+            color: white;
+            background-color: #131921;
+            border: none;
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .language select option {
+            background-color: white;
+            color: black;
+        }
+
+        .cart {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 7px 5px;
+            border: 1px solid transparent;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .cart-icon {
+            font-size: 30px;
+        }
+
+        /* Second Header */
+        .header-bottom {
+            background-color: #232f3e;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            padding: 0 14px;
+            min-height: 42px;
+            overflow-x: auto;
+        }
+
+        .header-bottom a,
+        .all-menu summary {
+            padding: 12px 10px;
+            border: 1px solid transparent;
+            font-size: 13px;
+            font-weight: bold;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .header-bottom a:hover,
+        .all-menu summary:hover {
+            border-color: white;
+        }
+
+        .all-menu {
+            position: relative;
+        }
+
+        .all-menu summary {
+            list-style: none;
+        }
+
+        .all-menu summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .all-menu[open] .menu-panel {
+            display: block;
+        }
+
+        .menu-panel {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 10;
+            width: 230px;
+            padding: 10px;
+            background-color: white;
+            color: #111111;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-panel a {
+            display: block;
+            color: #111111;
+            padding: 12px;
+            border: none;
+        }
+
+        .menu-panel a:hover {
+            background-color: #eeeeee;
+        }
+
+        /* Hero Banner */
+        .hero {
+            min-height: 290px;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.15),
+                    rgba(0, 0, 0, 0.45)
+                ),
+                url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1800&q=85")
+                center 55% / cover no-repeat;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: clamp(30px, 5vw, 48px);
+            margin-bottom: 15px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 17px;
+            margin-bottom: 22px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero a {
+            background-color: #ffd814;
+            color: #111111;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .hero a:hover {
+            background-color: #f7ca00;
+        }
+
+        /* Main Shopping Sections */
+        .shopping-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+            padding: 24px;
+            margin-top: -5px;
+        }
+
+        .shop-card {
+            background-color: white;
+            padding: 20px;
+            min-width: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        }
+
+        .shop-card h2 {
+            font-size: 21px;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            min-height: 54px;
+        }
+
+        .shop-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+            margin-bottom: 17px;
+        }
+
+        .shop-card a {
+            display: inline-block;
+            color: #007185;
+            font-size: 13px;
+        }
+
+        .shop-card a:hover {
+            color: #c7511f;
+            text-decoration: underline;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            display: block;
+            text-align: center;
+            background-color: #37475a;
+            color: white;
+            padding: 16px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .back-to-top:hover {
+            background-color: #485769;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #131a22;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        footer .footer-logo {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        footer .footer-logo span {
+            color: #ff9900;
+        }
+
+        footer p {
+            color: #dddddd;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 1100px) {
+            .header-top {
+                flex-wrap: wrap;
+            }
+
+            .search {
+                order: 2;
+                flex-basis: 100%;
+            }
+
+            .shopping-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-top {
+                padding: 8px;
+                gap: 8px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .delivery {
+                white-space: normal;
+            }
+
+            .header-item .small-text {
+                font-size: 10px;
+            }
+
+            .header-item .bold-text {
+                font-size: 11px;
+            }
+
+            .language {
+                gap: 2px;
+            }
+
+            .cart {
+                gap: 2px;
+                font-size: 12px;
+            }
+
+            .cart-icon {
+                font-size: 23px;
+            }
+
+            .header-bottom {
+                padding: 0 5px;
+            }
+
+            .header-bottom a,
+            .all-menu summary {
+                padding: 12px 8px;
+                font-size: 12px;
+            }
+
+            .hero {
+                min-height: 240px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .shopping-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                padding: 14px;
+            }
+
+            .shop-card h2 {
+                min-height: auto;
+            }
+
+            .shop-card img {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+
+<body id="top">
+
+    <!-- FIRST HEADER -->
+    <header class="header-top">
+
+        <!-- Jean Logo -->
+        <a href="#top" class="logo" aria-label="Jean home">
+            Jean<span>.</span>
+        </a>
+
+        <!-- Delivery Location -->
+        <a href="#shopping" class="delivery">
+            <span class="delivery-icon" aria-hidden="true">📍</span>
+            <span>
+                <span class="small-text">Deliver to</span>
+                <span class="bold-text">India</span>
+            </span>
+        </a>
+
+        <!-- Search Bar -->
+        <form class="search" action="#" method="get" role="search">
+            <label for="category" hidden>Search category</label>
+            <select id="category" name="category" aria-label="Search category">
+                <option value="all">All</option>
+                <option value="kitchen">Kitchen</option>
+                <option value="beauty">Beauty</option>
+                <option value="fashion">Fashion</option>
+                <option value="toys">Toys</option>
+            </select>
+
+            <label for="search-input" hidden>Search Jean</label>
+            <input
+                type="search"
+                id="search-input"
+                name="q"
+                placeholder="Search Jean"
+            >
+
+            <button type="submit" aria-label="Search">🔍</button>
+        </form>
+
+        <!-- Language Selection -->
+        <div class="header-item language">
+            <span aria-hidden="true">🇺🇸</span>
+            <label for="language-select" hidden>Choose language</label>
+            <select id="language-select" name="language" aria-label="Language">
+                <option value="en" selected>EN</option>
+                <option value="hi">HI</option>
+                <option value="fr">FR</option>
+            </select>
+        </div>
+
+        <!-- Account and Sign In -->
+        <a href="#signin" class="header-item">
+            <span class="small-text">Hello, Sign In</span>
+            <span class="bold-text">Accounts &amp; Lists ▾</span>
+        </a>
+
+        <!-- Returns and Orders -->
+        <a href="#orders" class="header-item">
+            <span class="small-text">Returns</span>
+            <span class="bold-text">&amp; Orders</span>
+        </a>
+
+        <!-- Shopping Cart -->
+        <a href="#cart" class="cart" aria-label="Shopping cart">
+            <span class="cart-icon" aria-hidden="true">🛒</span>
+            <span>Cart</span>
+        </a>
+
+    </header>
+
+    <!-- SECOND HEADER / NAVIGATION -->
+    <nav class="header-bottom" aria-label="Main navigation">
+
+        <!-- All Categories Menu -->
+        <details class="all-menu">
+            <summary>☰ All</summary>
+            <div class="menu-panel">
+                <a href="#kitchen">Kitchen</a>
+                <a href="#beauty">Beauty</a>
+                <a href="#fashion">Fashion</a>
+                <a href="#toys">Toys</a>
+                <a href="#deals">Today's Deals</a>
+            </div>
+        </details>
+
+        <a href="#prime-video">Prime Video</a>
+        <a href="#coupons">Coupons</a>
+        <a href="#customer-service">Customer Service</a>
+        <a href="#deals">Today's Deals</a>
+        <a href="#registry">Registry</a>
+        <a href="#gift-cards">Gift Cards</a>
+        <a href="#sell">Sell</a>
+
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" aria-labelledby="hero-heading">
+        <h1 id="hero-heading">Discover Something Wonderful</h1>
+        <p>Everyday essentials, new discoveries, and things you'll love.</p>
+        <a href="#shopping">Explore Shopping</a>
+    </section>
+
+    <!-- MAIN SHOPPING CONTENT -->
+    <main id="shopping">
+
+        <section class="shopping-grid" aria-label="Featured shopping categories">
+
+            <!-- Kitchen Card -->
+            <article class="shop-card" id="kitchen">
+                <h2>Shop Kitchen Must-Haves</h2>
+                <img
+                    src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=700&q=85"
+                    alt="Modern kitchen with stylish countertops and kitchen essentials"
+                    loading="lazy"
+                >
+                <a href="#kitchen">Explore kitchen essentials →</a>
+            </article>
+
+            <!-- Beauty Card -->
+            <article class="shop-card" id="beauty">
+                <h2>Shop All Things Beauty</h2>
+                <img
+                    src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=85"
+                    alt="Beauty products and cosmetics arranged on a table"
+                    loading="lazy"
+                >
+                <a href="#beauty">Discover beauty products →</a>
+            </article>
+
+            <!-- Fashion Card -->
+            <article class="shop-card" id="fashion">
+                <h2>Start Looking Sharp</h2>
+                <img
+                    src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=700&q=85"
+                    alt="Smart men's fashion and stylish clothing"
+                    loading="lazy"
+                >
+                <a href="#fashion">Explore fashion →</a>
+            </article>
+
+            <!-- Toys Card -->
+            <article class="shop-card" id="toys">
+                <h2>Toys for Little Ones</h2>
+                <img
+                    src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?auto=format&fit=crop&w=700&q=85"
+                    alt="Colorful toys for children"
+                    loading="lazy"
+                >
+                <a href="#toys">Discover toys and games →</a>
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- BACK TO TOP -->
+    <a href="#top" class="back-to-top">Back to top ↑</a>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">Jean<span>.</span></div>
+        <p>Your everyday destination for shopping and discovery.</p>
+        <p>&copy; 2026 Jean. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
