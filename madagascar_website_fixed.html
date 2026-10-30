@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore Madagascar's real landscapes, baobabs, lemurs, Tsingy limestone formations, beaches, Malagasy cuisine and culture.">
+<title>Madagascar, the Place to Be</title>
+
+<style>
+:root {
+    --ocean: #103c43;
+    --green: #28583e;
+    --red: #c65c3b;
+    --sand: #f5efe4;
+    --cream: #fffdf8;
+    --text: #273632;
+    --muted: #68756f;
+    --white: #fff;
+    --radius: 20px;
+    --shadow: 0 12px 35px rgba(16,60,67,.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button, input, textarea {
+    font: inherit;
+}
+
+a:focus-visible, button:focus-visible,
+input:focus-visible, textarea:focus-visible {
+    outline: 3px solid #f0ad62;
+    outline-offset: 4px;
+}
+
+.container {
+    width: min(1180px, 91%);
+    margin: auto;
+}
+
+.section {
+    padding: 85px 0;
+}
+
+.section-heading {
+    max-width: 720px;
+    margin: 0 auto 42px;
+    text-align: center;
+}
+
+.eyebrow {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--red);
+    font-size: .76rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.section-heading h2,
+.planner-intro h2,
+.cuisine-content h2 {
+    color: var(--ocean);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.2;
+}
+
+.section-heading h2 {
+    margin-bottom: 14px;
+    font-size: clamp(2rem, 4vw, 3.1rem);
+}
+
+.section-heading p,
+.muted {
+    color: var(--muted);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 23px;
+    border: 0;
+    border-radius: 30px;
+    background: var(--red);
+    color: var(--white);
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .25s, background .25s;
+}
+
+.btn:hover {
+    background: #a9452c;
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    border: 1px solid rgba(255,255,255,.8);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: var(--ocean);
+}
+
+/* HEADER */
+
+.site-header {
+    position: relative;
+    z-index: 10;
+    background: white;
+    box-shadow: 0 3px 20px #0000000a;
+}
+
+.topbar {
+    min-height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--ocean);
+}
+
+.brand-icon {
+    display: grid;
+    width: 47px;
+    height: 47px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--red);
+    color: white;
+    font-size: 1.5rem;
+}
+
+.brand strong {
+    display: block;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.12rem;
+    line-height: 1.3;
+}
+
+.brand small {
+    display: block;
+    color: var(--muted);
+    font-family: Arial, sans-serif;
+    font-size: .67rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.navigation {
+    border-top: 1px solid #eeeae2;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.nav-list a {
+    display: block;
+    padding: 15px 23px;
+    color: var(--ocean);
+    font-size: .88rem;
+    font-weight: 700;
+    transition: background .2s, color .2s;
+}
+
+.nav-list a:hover {
+    background: var(--sand);
+    color: var(--red);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: white;
+    background:
+        linear-gradient(90deg, rgba(8,34,32,.86), rgba(8,34,32,.28)),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Walking_the_Avenue_of_the_Baobabs.jpg?width=1600") center/cover no-repeat,
+        var(--ocean);
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 760px;
+    padding: 85px 0;
+    animation: fadeUp .9s ease both;
+}
+
+.hero .eyebrow {
+    color: #ffd39a;
+}
+
+.hero h1 {
+    margin-bottom: 23px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(3rem, 7vw, 5.8rem);
+    line-height: 1.02;
+    letter-spacing: -2px;
+}
+
+.hero h1 span {
+    color: #ffd39a;
+}
+
+.hero p {
+    max-width: 610px;
+    margin-bottom: 28px;
+    color: #f0f4ed;
+    font-size: 1.08rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+}
+
+/* TRIP PLANNER */
+
+.planner-section {
+    position: relative;
+    z-index: 2;
+    margin-top: -40px;
+}
+
+.planner-card {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 35px;
+    padding: 38px;
+    border: 1px solid #ece4d8;
+    border-radius: 25px;
+    background: white;
+    box-shadow: var(--shadow);
+}
+
+.planner-intro h2 {
+    margin-bottom: 15px;
+    font-size: 2.25rem;
+}
+
+.planner-intro p {
+    margin-bottom: 20px;
+    color: var(--muted);
+}
+
+.planner-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--ocean);
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+.planner-form textarea {
+    width: 100%;
+    min-height: 125px;
+    padding: 15px;
+    resize: vertical;
+    border: 1px solid #d8ded7;
+    border-radius: 13px;
+    background: #fffefa;
+}
+
+.example-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 12px 0 20px;
+}
+
+.example-list span {
+    padding: 5px 10px;
+    border: 1px solid #e6e6de;
+    border-radius: 30px;
+    color: var(--muted);
+    font-size: .74rem;
+}
+
+.ai-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.ai-row label {
+    margin: 0;
+}
+
+.ai-row small {
+    display: block;
+    color: var(--muted);
+    font-size: .74rem;
+    font-weight: normal;
+}
+
+.toggle {
+    position: relative;
+    width: 52px;
+    height: 29px;
+    flex-shrink: 0;
+}
+
+.toggle input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.toggle span {
+    position: absolute;
+    inset: 0;
+    border-radius: 30px;
+    background: #b9c1bb;
+    cursor: pointer;
+    transition: background .25s;
+}
+
+.toggle span::before {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background: white;
+    content: "";
+    transition: transform .25s;
+}
+
+.toggle input:checked + span {
+    background: var(--green);
+}
+
+.toggle input:checked + span::before {
+    transform: translateX(23px);
+}
+
+.toggle input:focus-visible + span {
+    outline: 3px solid #f0ad62;
+    outline-offset: 3px;
+}
+
+.planner-form .btn {
+    width: 100%;
+}
+
+.notice {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: .75rem;
+}
+
+/* DISCOVERY STRIP */
+
+.discovery-strip {
+    padding: 65px 0 30px;
+    background: var(--sand);
+}
+
+.discovery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.discovery-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 17px;
+    border-radius: 15px;
+    background: white;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.discovery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.discovery-icon {
+    font-size: 1.6rem;
+}
+
+.discovery-item h3 {
+    color: var(--ocean);
+    font-size: .88rem;
+}
+
+.discovery-item p {
+    color: var(--muted);
+    font-size: .74rem;
+}
+
+/* DESTINATION CARDS */
+
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.destination-card {
+    overflow: hidden;
+    border: 1px solid #eee9df;
+    border-radius: var(--radius);
+    background: white;
+    box-shadow: 0 5px 18px #00000005;
+    transition: transform .3s, box-shadow .3s;
+}
+
+.destination-card:hover {
+    transform: translateY(-7px);
+    box-shadow: var(--shadow);
+}
+
+.destination-card img {
+    height: 250px;
+    transition: transform .5s;
+}
+
+.destination-card:hover img {
+    transform: scale(1.05);
+}
+
+.destination-image {
+    overflow: hidden;
+    position: relative;
+}
+
+.tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 6px 11px;
+    border-radius: 20px;
+    background: white;
+    color: var(--ocean);
+    font-size: .72rem;
+    font-weight: 800;
+}
+
+.destination-content {
+    padding: 22px;
+}
+
+.destination-content h3 {
+    margin-bottom: 8px;
+    color: var(--ocean);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.4rem;
+}
+
+.destination-content p {
+    margin-bottom: 14px;
+    color: var(--muted);
+    font-size: .89rem;
+}
+
+.text-link {
+    color: var(--red);
+    font-size: .86rem;
+    font-weight: 800;
+}
+
+/* REAL MADAGASCAR IMAGE GALLERY */
+
+.gallery-section {
+    background: var(--sand);
+}
+
+.photo-source {
+    margin-top: 25px;
+    text-align: center;
+    color: var(--muted);
+    font-size: .83rem;
+}
+
+.photo-source a {
+    color: var(--red);
+    text-decoration: underline;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 220px;
+    gap: 15px;
+}
+
+.gallery-card {
+    position: relative;
+    grid-column: span 4;
+    overflow: hidden;
+    border-radius: 17px;
+    background: #d9d5c8;
+}
+
+.gallery-card.large {
+    grid-column: span 8;
+    grid-row: span 2;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    transition: transform .6s;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-card a {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    background: linear-gradient(transparent 30%, rgba(5,28,26,.85));
+    color: white;
+}
+
+.gallery-card a span {
+    display: block;
+    color: #ffd39a;
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+
+.gallery-card h3 {
+    margin-top: 5px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.35rem;
+}
+
+/* TRAVEL STYLES */
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 23px;
+}
+
+.experience-card {
+    overflow: hidden;
+    padding-bottom: 25px;
+    border-radius: var(--radius);
+    background: white;
+    box-shadow: var(--shadow);
+    transition: transform .3s;
+}
+
+.experience-card:hover {
+    transform: translateY(-6px);
+}
+
+.experience-card img {
+    height: 245px;
+    margin-bottom: 20px;
+}
+
+.experience-card h3,
+.experience-card p,
+.experience-card .text-link {
+    margin-right: 23px;
+    margin-left: 23px;
+}
+
+.experience-card h3 {
+    margin-bottom: 9px;
+    color: var(--ocean);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.45rem;
+}
+
+.experience-card p {
+    margin-bottom: 17px;
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+/* CUISINE */
+
+.cuisine-section {
+    background: #f9f6ef;
+}
+
+.cuisine-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 50px;
+}
+
+.cuisine-photo {
+    overflow: hidden;
+    border-radius: 23px;
+}
+
+.cuisine-photo img {
+    height: 430px;
+    transition: transform .6s;
+}
+
+.cuisine-photo:hover img {
+    transform: scale(1.04);
+}
+
+.cuisine-content h2 {
+    margin-bottom: 17px;
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.cuisine-content > p {
+    margin-bottom: 23px;
+    color: var(--muted);
+}
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.food-item {
+    padding: 13px;
+    border: 1px solid #e7e0d5;
+    border-radius: 12px;
+    background: white;
+}
+
+.food-item strong {
+    display: block;
+    color: var(--ocean);
+}
+
+.food-item span {
+    color: var(--muted);
+    font-size: .78rem;
+}
+
+/* ACCOMMODATION */
+
+.hostel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.hostel-card {
+    overflow: hidden;
+    border: 1px solid #eee9df;
+    border-radius: 18px;
+    background: white;
+    transition: transform .3s, box-shadow .3s;
+}
+
+.hostel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.hostel-card img {
+    height: 225px;
+}
+
+.hostel-content {
+    padding: 21px;
+}
+
+.hostel-content small {
+    color: var(--red);
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.hostel-content h3 {
+    margin: 8px 0;
+    color: var(--ocean);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.3rem;
+}
+
+.hostel-content p {
+    color: var(--muted);
+    font-size: .88rem;
+}
+
+.price-note {
+    margin-top: 15px;
+    padding-top: 13px;
+    border-top: 1px solid #eee9df;
+    color: var(--ocean);
+    font-size: .79rem;
+}
+
+/* TOURS */
+
+.tours-section {
+    background: var(--ocean);
+    color: white;
+}
+
+.tours-section .section-heading h2 {
+    color: white;
+}
+
+.tours-section .section-heading p {
+    color: #d2dfd9;
+}
+
+.tours-section .eyebrow {
+    color: #ffd39a;
+}
+
+.tour-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.tour-card {
+    padding: 28px;
+    border: 1px solid #ffffff25;
+    border-radius: 18px;
+    background: #ffffff0c;
+    transition: transform .3s, background .3s;
+}
+
+.tour-card:hover {
+    transform: translateY(-5px);
+    background: #ffffff18;
+}
+
+.tour-icon {
+    margin-bottom: 18px;
+    font-size: 2rem;
+}
+
+.tour-card h3 {
+    margin-bottom: 10px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.4rem;
+}
+
+.tour-card p {
+    margin-bottom: 20px;
+    color: #d2dfd9;
+    font-size: .9rem;
+}
+
+.tour-card .text-link {
+    color: #ffd39a;
+}
+
+/* MALAGASY PEOPLE AND CULTURE */
+
+.culture-banner {
+    min-height: 410px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 25px;
+    background:
+        linear-gradient(90deg, rgba(10,39,34,.87), rgba(10,39,34,.22)),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Andasibe%2C_Madagascar.jpg?width=1200") center/cover no-repeat,
+        var(--green);
+}
+
+.culture-content {
+    max-width: 650px;
+    padding: 50px;
+    color: white;
+}
+
+.culture-content .eyebrow {
+    color: #ffd39a;
+}
+
+.culture-content h2 {
+    margin-bottom: 17px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1.15;
+}
+
+.culture-content p {
+    margin-bottom: 24px;
+}
+
+/* BOOKING */
+
+.booking-section {
+    padding: 75px 0;
+    background: var(--sand);
+    text-align: center;
+}
+
+.booking-section h2 {
+    margin-bottom: 15px;
+    color: var(--ocean);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+}
+
+.booking-section p {
+    max-width: 680px;
+    margin: 0 auto 25px;
+    color: var(--muted);
+}
+
+/* FOOTER */
+
+.site-footer {
+    padding: 55px 0 20px;
+    background: #102f34;
+    color: white;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 30px;
+    padding-bottom: 35px;
+}
+
+.footer-description {
+    max-width: 300px;
+    margin-top: 17px;
+    color: #c2d0cb;
+    font-size: .88rem;
+}
+
+.footer-column h3 {
+    margin-bottom: 15px;
+    color: #ffd39a;
+    font-size: .95rem;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column li {
+    margin-bottom: 9px;
+}
+
+.footer-column a,
+.footer-column p {
+    color: #c2d0cb;
+    font-size: .84rem;
+}
+
+.footer-column a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid #ffffff25;
+    color: #c2d0cb;
+    font-size: .8rem;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+    .nav-list a {
+        padding: 13px 14px;
+    }
+
+    .planner-card {
+        grid-template-columns: 1fr;
+    }
+
+    .discovery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .destination-grid,
+    .experience-grid,
+    .hostel-grid,
+    .tour-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-card {
+        grid-column: span 6;
+    }
+
+    .gallery-card.large {
+        grid-column: span 12;
+    }
+
+    .cuisine-layout {
+        gap: 30px;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .section {
+        padding: 60px 0;
+    }
+
+    .topbar {
+        min-height: 75px;
+        gap: 12px;
+    }
+
+    .brand-icon {
+        width: 39px;
+        height: 39px;
+    }
+
+    .brand strong {
+        font-size: .95rem;
+    }
+
+    .brand small {
+        font-size: .57rem;
+    }
+
+    .nav-list li {
+        flex: 1 1 50%;
+    }
+
+    .nav-list a {
+        height: 100%;
+        padding: 11px 6px;
+        border-bottom: 1px solid #eeeae2;
+        font-size: .77rem;
+        text-align: center;
+    }
+
+    .hero {
+        min-height: 540px;
+        background-position: center;
+    }
+
+    .hero-content {
+        padding: 65px 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.8rem, 12vw, 4rem);
+    }
+
+    .hero p {
+        font-size: .97rem;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .planner-section {
+        margin-top: -25px;
+    }
+
+    .planner-card {
+        padding: 25px 19px;
+        gap: 25px;
+    }
+
+    .planner-intro h2 {
+        font-size: 1.9rem;
+    }
+
+    .discovery-grid,
+    .destination-grid,
+    .experience-grid,
+    .hostel-grid,
+    .tour-grid,
+    .cuisine-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .discovery-strip {
+        padding-top: 45px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 175px;
+        gap: 10px;
+    }
+
+    .gallery-card,
+    .gallery-card.large {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .gallery-card.large {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .gallery-card a {
+        padding: 12px;
+    }
+
+    .gallery-card h3 {
+        font-size: 1rem;
+    }
+
+    .destination-card img,
+    .experience-card img,
+    .hostel-card img {
+        height: 235px;
+    }
+
+    .cuisine-photo img {
+        height: 300px;
+    }
+
+    .culture-banner {
+        min-height: 430px;
+        background-position: center;
+    }
+
+    .culture-content {
+        padding: 27px;
+    }
+
+    .culture-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .food-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px 15px;
+    }
+
+    .footer-brand {
+        grid-column: span 2;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 380px) {
+    .brand strong {
+        font-size: .84rem;
+    }
+
+    .food-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Correct image display and graceful layout for remote photo files */
+img {
+    display: block;
+    max-width: 100%;
+}
+.destination-image img,
+.gallery-card img,
+.experience-card img,
+.hostel-card img,
+.cuisine-photo img {
+    width: 100%;
+    object-fit: cover;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container topbar">
+        <a href="#home" class="brand">
+            <span class="brand-icon" aria-hidden="true">🌴</span>
+            <span>
+                <strong>Madagascar</strong>
+                <small>The Place to Be</small>
+            </span>
+        </a>
+        <a href="#book" class="btn">Plan Your Adventure ↗</a>
+    </div>
+
+    <nav class="navigation" aria-label="Main navigation">
+        <ul class="nav-list container">
+            <li><a href="#destinations">Famous Destinations</a></li>
+            <li><a href="#cuisine">Culinary Discovery</a></li>
+            <li><a href="#hostels">Top Hostels</a></li>
+            <li><a href="#tours">Flights &amp; Tour Operators</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+    <div class="container hero-content">
+        <span class="eyebrow">Discover the real Red Island</span>
+        <h1>Madagascar.<br><span>Wild at Heart.</span></h1>
+        <p>
+            Walk beneath ancient baobabs, discover extraordinary lemurs,
+            explore dramatic stone forests, taste Malagasy specialties,
+            and experience the island's remarkable cultural heritage.
+        </p>
+        <div class="hero-actions">
+            <a class="btn" href="#destinations">Explore Madagascar ↗</a>
+            <a class="btn btn-outline" href="#planner">Design Your Dream Trip</a>
+        </div>
+    </div>
+</section>
+
+<section class="planner-section" id="planner">
+    <div class="container planner-card">
+        <div class="planner-intro">
+            <span class="eyebrow">Your journey, your way</span>
+            <h2>Your Madagascar Adventure Starts Here</h2>
+            <p>
+                Tell us your dream and discover the extraordinary
+                landscapes, wildlife, flavors, and cultures of the Red Island.
+            </p>
+            <p class="muted">✦ One island. A thousand possibilities.</p>
+        </div>
+
+        <form class="planner-form" action="#planner" method="get">
+            <label for="trip-idea">Describe your ideal trip</label>
+            <textarea
+                id="trip-idea"
+                name="trip"
+                placeholder="Describe your ideal trip to Madagascar..."
+                required
+                minlength="5"
+            ></textarea>
+
+            <div class="example-list">
+                <span>Wildlife &amp; lemurs</span>
+                <span>Tropical beaches</span>
+                <span>Malagasy culture</span>
+                <span>Road trip adventure</span>
+            </div>
+
+            <div class="ai-row">
+                <label for="ai-toggle">
+                    AI-generated travel recommendations
+                    <small>Visual demo only; no AI service is connected.</small>
+                </label>
+                <label class="toggle">
+                    <input type="checkbox" id="ai-toggle" name="ai" value="on">
+                    <span></span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn">Discover My Ideal Trip ↗</button>
+            <p class="notice">
+                This HTML/CSS prototype does not generate AI itineraries
+                or transmit your trip description.
+            </p>
+        </form>
+    </div>
+</section>
+
+<section class="discovery-strip">
+    <div class="container discovery-grid">
+        <a class="discovery-item" href="#destinations">
+            <span class="discovery-icon">🗺️</span>
+            <div><h3>Remarkable Places</h3><p>Discover the island</p></div>
+        </a>
+        <a class="discovery-item" href="#cuisine">
+            <span class="discovery-icon">🥭</span>
+            <div><h3>Local Flavors</h3><p>Taste the Red Island</p></div>
+        </a>
+        <a class="discovery-item" href="#hostels">
+            <span class="discovery-icon">🛖</span>
+            <div><h3>Places to Stay</h3><p>Rest and recharge</p></div>
+        </a>
+        <a class="discovery-item" href="#tours">
+            <span class="discovery-icon">🧭</span>
+            <div><h3>Local Adventures</h3><p>Explore with guides</p></div>
+        </a>
+    </div>
+</section>
+
+<section class="section" id="destinations">
+    <div class="container">
+        <div class="section-heading">
+            <span class="eyebrow">Extraordinary places</span>
+            <h2>Discover the Wonders of Madagascar</h2>
+            <p>Explore real destinations, from iconic baobabs to limestone pinnacles, rainforest habitats, and Indian Ocean islands.</p>
+        </div>
+
+        <div class="destination-grid">
+
+            <article class="destination-card">
+                <div class="destination-image">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Walking_the_Avenue_of_the_Baobabs.jpg?width=1600" alt="Explore photographs of the Avenue of the Baobabs near Morondava" loading="lazy">
+                    <span class="tag">Iconic Landmark</span>
+                </div>
+                <div class="destination-content">
+                    <h3>Avenue of the Baobabs</h3>
+                    <p>Discover Madagascar's famous giant baobabs, rising above the red earth near Morondava.</p>
+                    <a class="text-link" href="https://100wondersproject.com/galleries/056-madagascar/" target="_blank" rel="noopener noreferrer">See authentic destination photos ↗</a>
+                </div>
+            </article>
+
+            <article class="destination-card">
+                <div class="destination-image">
+                    <img src="https://live.staticflickr.com/65535/53382496852_bff4fd8357_o.jpg" alt="Explore actual Tsingy de Bemaraha limestone formations" loading="lazy">
+                    <span class="tag">Natural Wonder</span>
+                </div>
+                <div class="destination-content">
+                    <h3>Tsingy de Bemaraha</h3>
+                    <p>Discover jagged limestone pinnacles, stone forests, dramatic canyons, and remarkable bridges.</p>
+                    <a class="text-link" href="https://photos.wildmadagascar.org/Tsingy_de_Bemaraha.html" target="_blank" rel="noopener noreferrer">See Tsingy photographs ↗</a>
+                </div>
+            </article>
+
+            <article class="destination-card">
+                <div class="destination-image">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Beach_at_Nosy_Be.jpg?width=1200" alt="Madagascar coastal scenery and photographic inspiration" loading="lazy">
+                    <span class="tag">Island Escape</span>
+                </div>
+                <div class="destination-content">
+                    <h3>Nosy Be &amp; the Coast</h3>
+                    <p>Explore tropical islands, beaches, fishing communities, and beautiful coastal landscapes.</p>
+                    <a class="text-link" href="https://nosybe-tourisme.com/en/what-to-do/photography/" target="_blank" rel="noopener noreferrer">Explore coastal photography ↗</a>
+                </div>
+            </article>
+
+            <article class="destination-card">
+                <div class="destination-image">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Andasibe%2C_Madagascar.jpg?width=1200" alt="Photographic collection of Madagascar's forests, wildlife, and flora" loading="lazy">
+                    <span class="tag">Rainforest</span>
+                </div>
+                <div class="destination-content">
+                    <h3>Andasibe &amp; the Rainforests</h3>
+                    <p>Discover the lush forests, endemic plants, chameleons, and extraordinary lemurs of Madagascar.</p>
+                    <a class="text-link" href="https://photos.wildmadagascar.org/" target="_blank" rel="noopener noreferrer">Explore wildlife and flora ↗</a>
+                </div>
+            </article>
+
+            <article class="destination-card">
+                <div class="destination-image">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Isalo_National_Park_Madagascar.jpg?width=1200" alt="Photographs of Madagascar's national parks, canyons, and mountain landscapes" loading="lazy">
+                    <span class="tag">Adventure</span>
+                </div>
+                <div class="destination-content">
+                    <h3>Isalo National Park</h3>
+                    <p>Explore rugged sandstone scenery, canyons, natural pools, and unforgettable hiking routes.</p>
+                    <a class="text-link" href="https://www.safaribookings.com/madagascar/photos" target="_blank" rel="noopener noreferrer">Browse Madagascar park photos ↗</a>
+                </div>
+            </article>
+
+            <article class="destination-card">
+                <div class="destination-image">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sakafo_Malagasy.jpg?width=1200" alt="Madagascar tourism photography collection featuring beaches, landscapes, culture, and wildlife" loading="lazy">
+                    <span class="tag">Island Life</span>
+                </div>
+                <div class="destination-content">
+                    <h3>Beaches &amp; Coastal Villages</h3>
+                    <p>Discover the coast, tropical scenery, local communities, and the diversity of island life.</p>
+                    <a class="text-link" href="https://images.tourisme.gov.mg/" target="_blank" rel="noopener noreferrer">Browse official tourism photos ↗</a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<section class="section gallery-section" id="gallery">
+    <div class="container">
+        <div class="section-heading">
+            <span class="eyebrow">Authentic photographic inspiration</span>
+            <h2>Madagascar Through Your Eyes</h2>
+            <p>Explore photographic collections featuring actual Madagascar destinations, native wildlife, unique plants, people, and culture.</p>
+        </div>
+
+        <div class="gallery-grid">
+
+            <article class="gallery-card large">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Walking_the_Avenue_of_the_Baobabs.jpg?width=1600" alt="Photographic gallery featuring Madagascar's Avenue of the Baobabs" loading="lazy">
+                <a href="https://100wondersproject.com/galleries/056-madagascar/" target="_blank" rel="noopener noreferrer">
+                    <div><span>Western Madagascar</span><h3>The Avenue of the Baobabs</h3></div>
+                </a>
+            </article>
+
+            <article class="gallery-card">
+                <img src="https://live.staticflickr.com/65535/53382496852_bff4fd8357_o.jpg" alt="Photographs of the limestone pinnacles and bridges at Tsingy de Bemaraha" loading="lazy">
+                <a href="https://photos.wildmadagascar.org/Tsingy_de_Bemaraha.html" target="_blank" rel="noopener noreferrer">
+                    <div><span>Stone Forest</span><h3>The Magnificent Tsingys</h3></div>
+                </a>
+            </article>
+
+            <article class="gallery-card">
+                <img src="https://live.staticflickr.com/5829/20462539474_0a7299048e_o.jpg" alt="Real Madagascar lemur photographs featuring native species" loading="lazy">
+                <a href="https://photos.wildmadagascar.org/topics/lemurs23.shtml" target="_blank" rel="noopener noreferrer">
+                    <div><span>Wildlife</span><h3>Remarkable Lemurs</h3></div>
+                </a>
+            </article>
+
+            <article class="gallery-card">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Andasibe%2C_Madagascar.jpg?width=1200" alt="Photographic collection of Madagascar's native flora, orchids, and plants" loading="lazy">
+                <a href="https://photos.wildmadagascar.org/" target="_blank" rel="noopener noreferrer">
+                    <div><span>Flora</span><h3>Unique Plant Life</h3></div>
+                </a>
+            </article>
+
+            <article class="gallery-card">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Beach_at_Nosy_Be.jpg?width=1200" alt="Madagascar coastal scenery and local fishing communities" loading="lazy">
+                <a href="https://nosybe-tourisme.com/en/what-to-do/photography/" target="_blank" rel="noopener noreferrer">
+                    <div><span>Coastal Beauty</span><h3>Life by the Ocean</h3></div>
+                </a>
+            </article>
+
+            <article class="gallery-card">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sakafo_Malagasy.jpg?width=1200" alt="Official Madagascar tourism photographs of culture, landscapes, and people" loading="lazy">
+                <a href="https://images.tourisme.gov.mg/" target="_blank" rel="noopener noreferrer">
+                    <div><span>Culture &amp; Community</span><h3>Meet Madagascar</h3></div>
+                </a>
+            </article>
+
+            <article class="gallery-card">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Produits_malgaches%2C_aliments%2C_artisanat%2C_Madagascar.jpg?width=1200" alt="Travel photography from Madagascar including wildlife, baobabs, villages, and landscapes" loading="lazy">
+                <a href="https://scip.be/index.php?Lang=EN&Page=PhotosMadagascar" target="_blank" rel="noopener noreferrer">
+                    <div><span>Island Stories</span><h3>Discover the Red Island</h3></div>
+                </a>
+            </article>
+
+        </div>
+
+        <p class="photo-source">
+            The images above are direct photo-file URLs from Wikimedia Commons and Flickr.
+            Image credits: <a href="https://commons.wikimedia.org/wiki/File:Walking_the_Avenue_of_the_Baobabs.jpg" target="_blank" rel="noopener noreferrer">Avenue of the Baobabs</a>,
+            <a href="https://commons.wikimedia.org/wiki/File:Beach_at_Nosy_Be.jpg" target="_blank" rel="noopener noreferrer">Nosy Be beach</a>,
+            <a href="https://commons.wikimedia.org/wiki/File:Andasibe,_Madagascar.jpg" target="_blank" rel="noopener noreferrer">Andasibe forest</a>, and
+            <a href="https://commons.wikimedia.org/wiki/File:Isalo_National_Park_Madagascar.jpg" target="_blank" rel="noopener noreferrer">Isalo National Park</a>. Check each source page for its specific licence and attribution requirements.
+        </p>
+    </div>
+</section>
+
+<section class="section" id="experiences">
+    <div class="container">
+        <div class="section-heading">
+            <span class="eyebrow">Choose your adventure</span>
+            <h2>One Island. A Thousand Adventures.</h2>
+            <p>Find the travel experience that inspires you most.</p>
+        </div>
+
+        <div class="experience-grid">
+
+            <article class="experience-card">
+                <img src="https://live.staticflickr.com/5829/20462539474_0a7299048e_o.jpg" alt="Madagascar's endemic lemurs in a wildlife photography collection" loading="lazy">
+                <h3>Wild Madagascar</h3>
+                <p>Explore lemurs, rainforest trails, native plants, and remarkable biodiversity.</p>
+                <a class="text-link" href="https://photos.wildmadagascar.org/" target="_blank" rel="noopener noreferrer">Explore wildlife ↗</a>
+            </article>
+
+            <article class="experience-card">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Beach_at_Nosy_Be.jpg?width=1200" alt="Coastal landscapes and beach photography from Madagascar" loading="lazy">
+                <h3>Coastal Paradise</h3>
+                <p>Discover islands, sandy beaches, coastal villages, and beautiful ocean scenery.</p>
+                <a class="text-link" href="https://nosybe-tourisme.com/en/what-to-do/photography/" target="_blank" rel="noopener noreferrer">Explore the coast ↗</a>
+            </article>
+
+            <article class="experience-card">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sakafo_Malagasy.jpg?width=1200" alt="Madagascar tourism photography covering local culture and gastronomy" loading="lazy">
+                <h3>Cultural Madagascar</h3>
+                <p>Experience traditional cuisine, local markets, community life, and Malagasy heritage.</p>
+                <a class="text-link" href="#cuisine">Discover local flavors ↗</a>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<section class="section cuisine-section" id="cuisine">
+    <div class="container cuisine-layout">
+
+        <div class="cuisine-photo">
+            <a href="https://images.tourisme.gov.mg/" target="_blank" rel="noopener noreferrer">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sakafo_Malagasy.jpg?width=1200" alt="Official tourism photo collection with Malagasy gastronomy and tropical food" loading="lazy">
+            </a>
+        </div>
+
+        <div class="cuisine-content">
+            <span class="eyebrow">Culinary discovery of the Red Isle</span>
+            <h2>A Journey of Flavors, One Plate at a Time</h2>
+            <p>
+                Explore Madagascar through its traditional dishes,
+                fragrant rice meals, regional specialties, and tropical fruits.
+                Malagasy cuisine is an essential part of the island's culture.
+            </p>
+
+            <div class="food-grid">
+                <div class="food-item"><strong>Romazava</strong><span>A traditional meat and leafy-green stew.</span></div>
+                <div class="food-item"><strong>Ravitoto</strong><span>Crushed cassava leaves, often cooked with meat.</span></div>
+                <div class="food-item"><strong>Mofo Gasy</strong><span>Traditional Malagasy rice cakes.</span></div>
+                <div class="food-item"><strong>Tropical Fruits</strong><span>Mangoes, lychees, bananas, and pineapples.</span></div>
+            </div>
+
+            <a class="btn" href="https://images.tourisme.gov.mg/" target="_blank" rel="noopener noreferrer">Explore Malagasy Gastronomy ↗</a>
+        </div>
+
+    </div>
+</section>
+
+<section class="section" id="hostels">
+    <div class="container">
+        <div class="section-heading">
+            <span class="eyebrow">Rest well, travel further</span>
+            <h2>Find Your Home Away from Home</h2>
+            <p>Explore accommodation options and verify real properties, prices, and availability before booking.</p>
+        </div>
+
+        <div class="hostel-grid">
+
+            <article class="hostel-card">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sakafo_Malagasy.jpg?width=1200" alt="Madagascar tourism image library featuring destinations and accommodation inspiration" loading="lazy">
+                <div class="hostel-content">
+                    <small>Antananarivo</small>
+                    <h3>City Guesthouses</h3>
+                    <p>Explore guesthouses and budget accommodation near the capital's markets and cultural landmarks.</p>
+                    <div class="price-note">Prices and availability: confirm directly with the property.</div>
+                </div>
+            </article>
+
+            <article class="hostel-card">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Beach_at_Nosy_Be.jpg?width=1200" alt="Nosy Be tourism photography for island travel inspiration" loading="lazy">
+                <div class="hostel-content">
+                    <small>Nosy Be</small>
+                    <h3>Island Stays</h3>
+                    <p>Look for guesthouses, beachfront accommodation, and island retreats near local activities.</p>
+                    <div class="price-note">Prices and availability: confirm directly with the property.</div>
+                </div>
+            </article>
+
+            <article class="hostel-card">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sakafo_Malagasy.jpg?width=1200" alt="Madagascar destination photography for eco-tourism and nature travel" loading="lazy">
+                <div class="hostel-content">
+                    <small>Nature Destinations</small>
+                    <h3>Eco-Lodges</h3>
+                    <p>Discover nature-oriented stays near parks, rainforest trails, and remarkable landscapes.</p>
+                    <div class="price-note">Prices and availability: confirm directly with the property.</div>
+                </div>
+            </article>
+
+        </div>
+
+        <p class="notice" style="text-align:center">
+            These are accommodation categories, not verified hotel listings.
+        </p>
+    </div>
+</section>
+
+<section class="section tours-section" id="tours">
+    <div class="container">
+        <div class="section-heading">
+            <span class="eyebrow">Plan your journey</span>
+            <h2>Every Great Adventure Starts with a Plan</h2>
+            <p>Research flights, local guides, and routes before setting off to explore the island.</p>
+        </div>
+
+        <div class="tour-grid">
+
+            <article class="tour-card">
+                <div class="tour-icon">✈️</div>
+                <h3>Flights</h3>
+                <p>Compare flight options, airport connections, travel dates, and baggage information.</p>
+                <a class="text-link" href="https://www.google.com/travel/flights" target="_blank" rel="noopener noreferrer">Explore flights ↗</a>
+            </article>
+
+            <article class="tour-card">
+                <div class="tour-icon">🧭</div>
+                <h3>Local Guides</h3>
+                <p>Research guided wildlife tours, cultural excursions, and local travel experiences.</p>
+                <a class="text-link" href="https://www.tripadvisor.com/" target="_blank" rel="noopener noreferrer">Explore travel experiences ↗</a>
+            </article>
+
+            <article class="tour-card">
+                <div class="tour-icon">🚙</div>
+                <h3>Road Trip Routes</h3>
+                <p>Connect national parks, highland towns, iconic baobabs, and coastal destinations.</p>
+                <a class="text-link" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">Explore maps ↗</a>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<section class="section" id="culture">
+    <div class="container">
+        <div class="culture-banner">
+            <div class="culture-content">
+                <span class="eyebrow">More than a destination</span>
+                <h2>Discover the People and Culture of Madagascar</h2>
+                <p>
+                    Explore the island's rich traditions, local markets,
+                    colorful produce, crafts, music, and community life.
+                    Discover Malagasy culture with curiosity and respect.
+                </p>
+                <a class="btn" href="https://images.tourisme.gov.mg/" target="_blank" rel="noopener noreferrer">Explore Cultural Photography ↗</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="booking-section" id="book">
+    <div class="container">
+        <span class="eyebrow">Your story is waiting</span>
+        <h2>Book a Trip Now</h2>
+        <p>
+            Walk beneath ancient baobabs, discover extraordinary wildlife,
+            enjoy the flavors of the Red Island, and experience the
+            spectacular beauty of Madagascar.
+        </p>
+        <a class="btn" href="#planner">Start Planning Your Adventure ↗</a>
+    </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+
+            <div>
+                <a href="#home" class="brand">
+                    <span class="brand-icon">🌴</span>
+                    <span>
+                        <strong style="color:white">Madagascar</strong>
+                        <small style="color:#c2d0cb">The Place to Be</small>
+                    </span>
+                </a>
+                <p class="footer-description">
+                    Discover Madagascar's remarkable wildlife,
+                    breathtaking landscapes, vibrant culture, and
+                    unforgettable travel experiences.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#gallery">Photo Gallery</a></li>
+                    <li><a href="#experiences">Experiences</a></li>
+                    <li><a href="#culture">Culture</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Plan Your Trip</h3>
+                <ul>
+                    <li><a href="#planner">Ideal Trip Planner</a></li>
+                    <li><a href="#cuisine">Culinary Discovery</a></li>
+                    <li><a href="#hostels">Accommodation</a></li>
+                    <li><a href="#tours">Flights &amp; Tours</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>Business contact details to be added by the company owner.</p>
+                <p style="margin-top:12px"><a href="#book">Book a Trip Now ↗</a></p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Madagascar, the Place to Be. All rights reserved.</p>
+            <a href="#home">Back to top ↑</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
